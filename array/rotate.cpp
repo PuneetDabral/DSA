@@ -9,3 +9,5 @@ public:
         nums=temp;
     }
 };
+
+//we use new arr if we use that arrey values can be over write 
