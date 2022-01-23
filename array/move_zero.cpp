@@ -20,7 +20,9 @@ void print(int arr[], int n)
 int main() {
     int n=6;
     int arr[6]={0,1,2,0,3,5};
-    sorted(arr,n);
+    //  print(arr,n);
+   sorted(arr,n);
     print(arr,n);
+    // cout<<endl<<arr[0];
 return 0;
 }
