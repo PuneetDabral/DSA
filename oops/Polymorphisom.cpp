@@ -5,16 +5,17 @@ class A {
 
     public:
     void sayHello() {
-        cout << "Hello Love Babbar" << endl;
+        cout << "Hello puneet" << endl;
     }
     
     int sayHello(char name) {
-        cout << "Hello Love Babbar" << endl;
-        return 1;
+        cout << "Hello r " << endl;
+        return 1;   //doest not effext on return type 
     }
 
-    void sayHello(string name) {
-        cout << "Hello " << name  << endl;
+    int sayHello(string name) {
+        cout << "Hello ram" << name  << endl;
+        return 1;
     }
 
 };
@@ -64,8 +65,8 @@ class Dog: public Animal {
 
 int main() {
 
-    Dog obj;
-    obj.speak();
+    // Dog obj;
+    // obj.speak();
 
 
 
@@ -80,14 +81,9 @@ int main() {
 
 
 
-
-
-
-
-/*
     A obj;
     obj.sayHello();
-    */
+    
 
 
     return 0;
