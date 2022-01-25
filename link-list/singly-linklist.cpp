@@ -35,7 +35,7 @@ void insertAtTail(Node *&tail, int d)
 void insertAtPosition(Node *&tail, Node *&head, int position, int d)
 {
     //for first position
-    if (position == 0)
+    if (position == 1)
     {
         insertAtHead(head, d);
         return;
