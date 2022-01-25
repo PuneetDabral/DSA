@@ -1,2 +1,2 @@
- // deleteNode(3,head,tail);
-    // print(head);
+deleteNode(tail, 5);
+    // print(tail);
