@@ -72,6 +72,7 @@ void inorder(node *root){
         return;
     }
     inorder(root->left);
+    // cout<<(*root).data<<" "; //how i can use this star operator
     cout<<root->data<<" ";
     inorder(root->right);
 
@@ -157,7 +158,8 @@ int main() {
 //     postorder(root);
 
 buildfromlevelorder(root);
-levelorderTraversal(root);
-//1 3 5 7 11 17 -1 -1 -1 -1 -1 -1
+// levelorderTraversal(root);
+inorder(root);
+//1 3 5 7 11 17 -1 -1 -1 -1 -1 -1 -1
 return 0;
 }
