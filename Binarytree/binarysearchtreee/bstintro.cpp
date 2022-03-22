@@ -79,7 +79,7 @@ void inorder(Node *root){
 }
 
 void preorder(Node *root){
-    //base case
+    //base case (NLR)
     if(root==NULL){
         return;
     }
@@ -91,7 +91,7 @@ void preorder(Node *root){
 }
 
 void postorder(Node *root){
-    //base case
+    //base case (LRN)
     if(root==NULL){
         return;
     }
@@ -115,6 +115,76 @@ void takeInput(Node* &root){
     }
 }
 
+Node *minvalue(Node *root){
+    Node *temp =root;
+    while(temp->left!=NULL){
+        temp = temp->left;
+
+    }
+    return temp;
+}
+Node *maxvalue(Node *root){
+    Node *temp =root;
+    while(temp->right!=NULL){
+        temp = temp->right;
+
+    }
+    return temp;
+}
+
+Node *deleteFromBst(Node *root,int val){
+if(root==NULL){
+    return root;
+}
+if(root->data==val){
+    //0 child
+    if(root->left==NULL && root->right==NULL){
+        delete root;
+        return NULL;
+    }
+
+
+    //1child
+    //left 
+if(root->left!=NULL && root->right==NULL){
+    Node * temp = root->left;
+    delete root;
+    return temp;
+
+}
+
+    //right
+if(root->right!=NULL && root->left==NULL){
+    Node * temp = root->right;
+    delete root;
+    return temp;
+    
+}
+
+
+    //2 child
+
+    if(root->left!=NULL && root->right!=NULL){
+        int mini = minvalue(root->right)->data;
+        root->data = mini;
+        root->right = deleteFromBst(root->right,mini);
+        return root;
+
+    }
+
+}
+else if(root->data>val){
+    //left aprt
+root->left = deleteFromBst(root->left,val);
+return root;
+}
+else{
+    //rightpart
+    root->right = deleteFromBst(root->right,val);
+   return root;
+
+}
+}
 
 
 int main() {
@@ -123,6 +193,10 @@ int main() {
     takeInput(root);
     cout<<"printing"<<endl;
     levelOrderTraversal(root);
+    cout<<endl;
+    cout<<minvalue(root);
+    deleteFromBst(root,30);
+    
 
 return 0;
 }
