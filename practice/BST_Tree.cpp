@@ -1,122 +1,114 @@
 #include <iostream>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 
-class Node{
- public:
- int data;
- Node *left;
- Node *right;
+class Node
+{
+public:
+    int data;
+    Node *left;
+    Node *right;
 
- Node(int d){
-     this->data=d;
-     this->left=NULL;
-     this->right=NULL;
-
- }
+    Node(int d)
+    {
+        this->data = d;
+        this->left = NULL;
+        this->right = NULL;
+    }
 };
 
-void takeInput(Node* &root){
-    int data;
-    cin>>data;
-
-    while(data != -1){
-        root = insertIntoBST(root,data);
-        cin>>data;
-
-    }
-}
-
-
-
-Node * insertIntoBST(Node *root, int d){
-
-    if(root==NULL){
+Node * insertIntoBST(Node *root, int d)
+{
+      if(root==NULL){
         root=new Node(d);
         return root;
     }
 
     if(d > root->data){
         //right part
-        root->right = insertIntoBST(root->right,d);
+        root->right =insertIntoBST(root->right,d);
     }
     else{
         root->left= insertIntoBST(root->left,d);
     }
     return root;
+   
 }
 
 
-void levelOrderTraversal(Node* root) {
+
+void takeinput(Node *&root){
+   int data;
+    cin>>data;
+
+    while(data != -1){
+        root =  insertIntoBST(root,data);
+        cin>>data;
+
+    }
+}
+
+
+void levelOrderTraversal(Node *root){
     queue<Node*> q;
     q.push(root);
     q.push(NULL);
 
-    while(!q.empty()) {
+    while(!q.empty()){
         Node* temp = q.front();
         q.pop();
 
-        if(temp == NULL) { 
-            //purana level complete traverse ho chuka hai
-            cout << endl;
-            if(!q.empty()) { 
-                //queue still has some child ndoes
+        if(temp == NULL){
+            cout<<endl;
+            if(!q.empty()){
                 q.push(NULL);
-            }  
+            }
         }
         else{
-            cout << temp -> data << " ";
-            if(temp ->left) {
-                q.push(temp ->left);
+            cout<<temp->data<<" ";
+            if(temp->left){
+                q.push(temp->left);
             }
-
-            if(temp ->right) {
-                q.push(temp ->right);
+            if(temp->right){
+                q.push(temp->right);
             }
         }
     }
-
 }
 
-
 void inorder(Node *root){
-    //base case   (LNR)
-    if(root==NULL){
-        return;
-    }
-    inorder(root->left);
-    // cout<<(*root).data<<" "; //how i can use this star operator
-    cout<<root->data<<" ";
-    inorder(root->right);
+//  (LNR) 
+if(root == NULL){
+    return ;
+
+}
+//in this traversal in bst the tree is sort 
+inorder(root->left);
+cout<<root->data<<" ";
+inorder(root->right);
 
 }
 
 void preorder(Node *root){
-    //base case (NLR)
+    // NLR
     if(root==NULL){
-        return;
+        return ;
     }
-     cout<<root->data<<" ";
-    preorder(root->left);
-   
-    preorder(root->right);
 
+    cout<<root->data<<" ";
+    preorder(root->left);
+    preorder(root->right);
 }
 
 void postorder(Node *root){
-    //base case (LRN)
-    if(root==NULL){
-        return;
+    //lRN
+    if(root ==NULL){
+        return ;
     }
-   
-   postorder(root->left);
-   
-   postorder(root->right);
-      cout<<root->data<<" ";
-
+    postorder(root->left);
+    postorder(root->right);
+    cout<<root->data<<" ";
 }
-
-
 
 Node *minvalue(Node *root){
     Node *temp =root;
@@ -134,6 +126,7 @@ Node *maxvalue(Node *root){
     }
     return temp;
 }
+
 
 Node *deleteFromBst(Node *root,int val){
 if(root==NULL){
@@ -190,16 +183,19 @@ else{
 }
 
 
-int main() {
-    Node* root=NULL;
-    cout<<"enter data to create BST"<<endl;
-    takeInput(root);
-    cout<<"printing"<<endl;
-    levelOrderTraversal(root);
-    cout<<endl;
-    cout<<minvalue(root);
-    deleteFromBst(root,30);
-    
 
-return 0;
+int main()
+{
+    Node *root = NULL;
+     cout<<"enter data to create BST"<<endl;
+    takeinput(root);
+    cout<<"printing"<<endl;
+    // levelOrderTraversal(root);
+    // inorder(root);
+    // preorder(root);
+    // postorder(root);
+   cout<<maxvalue(root) ->data<<endl;
+    cout<<minvalue(root) ->data;
+
+    return 0;
 }
