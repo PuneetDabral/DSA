@@ -15,6 +15,10 @@ int maximumFrequency(vector<int> &arr, int n)
              break;
          }
      }
+
+     for(auto i:count){
+        cout<<i.first<<" "<<i.second<<endl;
+    }
     return maxans;
     
 }
